@@ -6,10 +6,15 @@ public class HotelDatabase {
     // Database connection details
     private static final String URL = "jdbc:mysql://localhost:3306/hotel_management";
     private static final String USER = "root"; // Change to your MySQL username
-    private static final String PASSWORD = "password"; // Change to your MySQL password
+    private static final String PASSWORD = "1a1b1A&&"; // Change to your MySQL password
 
     // Create connection to the database
     public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
