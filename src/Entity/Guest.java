@@ -1,3 +1,4 @@
+package Entity;
 
 public class Guest {
 
@@ -39,7 +40,7 @@ public class Guest {
 
     @Override
     public String toString() {
-        return "Guest{" +
+        return "Entity.Guest{" +
                 "name='" + name + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", roomNo='" + roomNo + '\'' +
