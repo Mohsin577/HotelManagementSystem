@@ -64,6 +64,28 @@ public class HotelDatabase {
         }
     }
 
+    // Read all guest details
+    public static void readAllGuest() {
+        String sql = "SELECT * FROM guests";
+
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                if (rs.next()) {
+                    System.out.println("Guest ID: " + rs.getLong("guest_id"));
+                    System.out.println("Name: " + rs.getString("guest_name"));
+                    System.out.println("Mobile: " + rs.getString("guest_mobile"));
+                    System.out.println("Room No: " + rs.getString("guest_roomno"));
+                } else {
+                    System.out.println("Guest not found.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     // Update guest details
     public static void updateGuest(long guestId, String newName, String newMobile, String newRoomno) {
         String sql = "UPDATE guests SET guest_name = ?, guest_mobile = ?, guest_roomno = ? WHERE guest_id = ?";
