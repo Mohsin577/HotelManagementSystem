@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("WELCOME TO HOTEL MANAGEMENT SYSTEM");
+        System.out.println("HOTEL MANAGEMENT SYSTEM");
 
         Scanner sc = new Scanner(System.in);
 
