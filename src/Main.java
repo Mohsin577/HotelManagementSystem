@@ -1,38 +1,40 @@
-import Entity.Guest;
-import Services.GuestService;
+import Database.HotelDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        System.out.println("HOTEL MANAGEMENT SYSTEM");
 
         Scanner sc = new Scanner(System.in);
 
-//        List<Guest> guests = new ArrayList<>();
-        System.out.print("Enter number of Guests : ");
-        int n = sc.nextInt();
-        int i =0;
+        HotelDatabase hotelDatabase = new HotelDatabase();
+        boolean nextData = true;
+        while(nextData == true){
+            System.out.println("1. Add Guest");
 
-        GuestService guestService = new GuestService();
-
-        while(i<n) {
-            System.out.print("Enter Guest Id : ");
-            long id = sc.nextLong();
-            sc.nextLine();
-            System.out.print("Enter Guest Name : ");
-            String name = sc.nextLine();
-            System.out.print("Enter Guest Mobile : ");
-            String Mobile = sc.nextLine();
-            System.out.print("Enter Guest RoomNo : ");
-            String roomNo = sc.next();
-
-//            Guest newGuest = new Guest(id, name, Mobile, roomNo);
-            guestService.addGuest(id, name, Mobile, roomNo);
-            i++;
+            System.out.println("Enter Choice : ");
+            int choice = sc.nextInt();
+            switch(choice){
+                case 1:
+                    System.out.print("Enter Guest Id : ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Enter Guest Name : ");
+                    String name= sc.nextLine();
+                    System.out.print("Enter Guest Mobile : ");
+                    String mobile = sc.nextLine();
+                    System.out.print("Enter Guest RoodNo : ");
+                    String roomNo = sc.nextLine();
+                    hotelDatabase.createGuest(id,name,mobile,roomNo);
+                    break;
+                default:
+                    System.out.print("Enter Valid Option");
+                    break;
+            }
+            System.out.println("Do you want to continue true/false");
+            nextData = sc.nextBoolean();
         }
-//        System.out.println(guests);
+        
     }
 }
